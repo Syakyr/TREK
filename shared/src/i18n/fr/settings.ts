@@ -33,6 +33,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': "Modèle d'URL pour les tuiles de carte",
   'settings.mapProvider': 'Fournisseur de carte',
   'settings.mapProviderHint': 'Affecte les cartes Trip Planner et Journey. Atlas utilise toujours Leaflet.',
+  'settings.mapMarkerMode': 'Mode d’affichage des marqueurs',
+  'settings.mapMarkerModeHint':
+    'Les marqueurs de carte affichent les photos des lieux si disponibles, ou toujours l’icône et la couleur de la catégorie.',
+  'settings.mapMarkerModePhotos': 'Photos', // same-as-en
+  'settings.mapMarkerModeCategories': 'Icônes de catégorie',
   'settings.mapLeafletSubtitle': 'Classique 2D, toutes tuiles raster',
   'settings.mapMapboxSubtitle': 'Tuiles vectorielles, bâtiments 3D & terrain',
   'settings.mapMapLibreSubtitle': 'Tuiles vectorielles OpenFreeMap, sans jeton',

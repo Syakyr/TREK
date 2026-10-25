@@ -35,6 +35,11 @@ const settings: TranslationStrings = {
   'settings.mapProvider': 'Πάροχος Χάρτη',
   'settings.mapProviderHint':
     'Επηρεάζει τους χάρτες του Trip Planner και του Journey. Το Atlas χρησιμοποιεί πάντα Leaflet.',
+  'settings.mapMarkerMode': 'Λειτουργία δεικτών',
+  'settings.mapMarkerModeHint':
+    'Εάν οι δείκτες του χάρτη εμφανίζουν φωτογραφίες τόπων όταν υπάρχουν, ή πάντα το εικονίδιο και το χρώμα της κατηγορίας.',
+  'settings.mapMarkerModePhotos': 'Φωτογραφίες',
+  'settings.mapMarkerModeCategories': 'Εικονίδια κατηγορίας',
   'settings.mapLeafletSubtitle': 'Κλασικό 2D, οποιαδήποτε raster πλακίδια',
   'settings.mapMapboxSubtitle': 'Διανυσματικά πλακίδια, 3D κτίρια & ανάγλυφο',
   'settings.mapMapLibreSubtitle': 'Διανυσματικά πλακίδια OpenFreeMap, χωρίς token',

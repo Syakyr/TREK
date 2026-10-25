@@ -33,6 +33,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'URL sablon a térképcsempékhez',
   'settings.mapProvider': 'Térkép szolgáltató',
   'settings.mapProviderHint': 'A Trip Planner és Journey térképekre érvényes. Az Atlas mindig Leafletet használ.',
+  'settings.mapMarkerMode': 'Jelölőmegjelenítés',
+  'settings.mapMarkerModeHint':
+    'A térképjelölők mutassák-e a helyek fotóit, ha vannak, vagy mindig a kategória ikonját és színét.',
+  'settings.mapMarkerModePhotos': 'Fotók',
+  'settings.mapMarkerModeCategories': 'Kategóriaikonok',
   'settings.mapLeafletSubtitle': 'Klasszikus 2D, bármilyen raszter csempe',
   'settings.mapMapboxSubtitle': 'Vektoros csempék, 3D épületek és terep',
   'settings.mapMapLibreSubtitle': 'OpenFreeMap vektoros csempék, token nélkül',

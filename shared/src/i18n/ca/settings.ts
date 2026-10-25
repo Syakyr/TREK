@@ -23,6 +23,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': "Plantilla d'URL per als mosaics del mapa",
   'settings.mapProvider': 'Proveïdor de mapa',
   'settings.mapProviderHint': 'Afecta els mapes de Trip Planner i Journey. Atles sempre utilitza Leaflet.',
+  'settings.mapMarkerMode': 'Mode de visualització dels marcadors',
+  'settings.mapMarkerModeHint':
+    'Si els marcadors del mapa mostren fotos dels llocs quan n’hi ha, o sempre la icona i el color de la categoria.',
+  'settings.mapMarkerModePhotos': 'Fotos',
+  'settings.mapMarkerModeCategories': 'Icones de categoria',
   'settings.mapLeafletSubtitle': 'Clàssic 2D, qualsevol mosaic raster',
   'settings.mapMapboxSubtitle': 'Mosaics vectorials, edificis 3D i terreny',
   'settings.mapExperimental': 'Experimental', // same-as-en

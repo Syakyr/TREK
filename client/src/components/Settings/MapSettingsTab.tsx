@@ -15,7 +15,7 @@ import ToggleSwitch from './ToggleSwitch'
 import { SETTINGS_BUTTON_PRIMARY, SettingRow, SettingRows, SettingsHint, StatusPill } from './settingsKit'
 import { withTileApiKey } from '../../utils/tileUrl'
 import { defaultStyleForProvider, getStylePresets, type GlMapProvider } from '../Map/glProviders'
-import { MAP_PRESETS, PREVIEW_CENTER, PREVIEW_ZOOM } from './mapSettingsModel'
+import { MAP_PRESETS, PREVIEW_CENTER, PREVIEW_ZOOM, type MarkerMode } from './mapSettingsModel'
 import { useMapSettingsForm } from './useMapSettingsForm'
 
 /** A field holding a URL, token or key: the box look in Geist, so the characters read apart. */
@@ -132,7 +132,7 @@ export default function MapSettingsTab(): React.ReactElement {
   const {
     managed, saving, provider, changeProvider, mapTileUrl, setMapTileUrl, mapboxToken, setMapboxToken,
     cartoKey, setCartoKey, cartoNeedsKey, mapboxStyle, setMapboxStyle, mapbox3d, setMapbox3d,
-    mapboxQuality, setMapboxQuality, previewPlaces, glPreview, webgl2Missing, save: saveMapSettings,
+    mapboxQuality, setMapboxQuality, markerMode, setMarkerMode, previewPlaces, glPreview, webgl2Missing, save: saveMapSettings,
   } = useMapSettingsForm()
   // One chunk per engine — see components/Map/glLazy.tsx.
   const GlMapPreview = provider === 'maplibre-gl' ? GlMapPreviewMaplibre : GlMapPreviewMapbox
@@ -176,6 +176,18 @@ export default function MapSettingsTab(): React.ReactElement {
           </div>
         </SettingRow>
       </SettingRows>
+
+      {/* Marker display mode — applies to every provider. */}
+      <SettingRow label={t('settings.mapMarkerMode')} hint={t('settings.mapMarkerModeHint')} stacked>
+        <CustomSelect
+          value={markerMode}
+          onChange={(value: string) => { if (value) setMarkerMode(value as MarkerMode) }}
+          options={[
+            { value: 'photos', label: t('settings.mapMarkerModePhotos') },
+            { value: 'categories', label: t('settings.mapMarkerModeCategories') },
+          ]}
+        />
+      </SettingRow>
 
       {/* Leaflet settings */}
       {provider === 'leaflet' && (

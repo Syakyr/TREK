@@ -34,6 +34,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'URL do modelo de blocos do mapa',
   'settings.mapProvider': 'Provedor de mapa',
   'settings.mapProviderHint': 'Afeta os mapas do Planejador de Viagem e Diário. Atlas sempre usa Leaflet.',
+  'settings.mapMarkerMode': 'Modo de exibição dos marcadores',
+  'settings.mapMarkerModeHint':
+    'Se os marcadores do mapa mostram fotos dos locais quando houver, ou sempre o ícone e a cor da categoria.',
+  'settings.mapMarkerModePhotos': 'Fotos',
+  'settings.mapMarkerModeCategories': 'Ícones de categoria',
   'settings.mapLeafletSubtitle': 'Clássico 2D, quaisquer blocos raster',
   'settings.mapMapboxSubtitle': 'Blocos vetoriais, prédios 3D & terreno',
   'settings.mapMapLibreSubtitle': 'Blocos vetoriais OpenFreeMap, sem token',

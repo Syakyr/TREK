@@ -33,6 +33,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'Harita kutucukları için URL şablonu',
   'settings.mapProvider': 'Harita Sağlayıcısı',
   'settings.mapProviderHint': 'Seyahat planlayıcı ve Journey haritalarını etkiler. Atlas her zaman Leaflet kullanır.',
+  'settings.mapMarkerMode': 'Gösterge Görünümü',
+  'settings.mapMarkerModeHint':
+    'Harita işaretçilerinin varsa yer fotoğraflarını mı yoksa her zaman kategori simgesi ve rengini mi göstereceği.',
+  'settings.mapMarkerModePhotos': 'Fotoğraflar',
+  'settings.mapMarkerModeCategories': 'Kategori simgeleri',
   'settings.mapLeafletSubtitle': 'Klasik 2D, herhangi bir raster kutucuk',
   'settings.mapMapboxSubtitle': 'Vektör kutucuklar, 3D binalar ve arazi',
   'settings.mapMapLibreSubtitle': 'OpenFreeMap vektör kutucuklar, anahtar gerekmez',

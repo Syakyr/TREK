@@ -7,7 +7,15 @@ import type { Place } from '../../types';
 import { normalizeStyleForProvider } from '../Map/glProviders';
 import { useWebGL2 } from '../Map/glSupport';
 import { useToast } from '../shared/Toast';
-import { type MapProvider, normalizeProvider, previewPlace, slotStyle, styleForProvider } from './mapSettingsModel';
+import {
+  type MapProvider,
+  type MarkerMode,
+  normalizeMarkerMode,
+  normalizeProvider,
+  previewPlace,
+  slotStyle,
+  styleForProvider,
+} from './mapSettingsModel';
 
 export interface MapSettingsFormOptions {
   /**
@@ -39,6 +47,7 @@ export function useMapSettingsForm({ mirrorStyleBeforeSave = false }: MapSetting
   );
   const [mapbox3d, setMapbox3d] = useState<boolean>(settings.mapbox_3d_enabled !== false);
   const [mapboxQuality, setMapboxQuality] = useState<boolean>(settings.mapbox_quality_mode === true);
+  const [markerMode, setMarkerMode] = useState<MarkerMode>(normalizeMarkerMode(settings.map_marker_mode));
 
   useEffect(() => {
     const nextProvider = normalizeProvider(settings.map_provider);
@@ -49,6 +58,7 @@ export function useMapSettingsForm({ mirrorStyleBeforeSave = false }: MapSetting
     setMapboxStyle(styleForProvider(nextProvider, slotStyle(nextProvider, settings)));
     setMapbox3d(settings.mapbox_3d_enabled !== false);
     setMapboxQuality(settings.mapbox_quality_mode === true);
+    setMarkerMode(normalizeMarkerMode(settings.map_marker_mode));
   }, [settings]);
 
   const previewPlaces = useMemo((): Place[] => [previewPlace()], []);
@@ -73,6 +83,7 @@ export function useMapSettingsForm({ mirrorStyleBeforeSave = false }: MapSetting
         ...stylePatch,
         mapbox_3d_enabled: mapbox3d,
         mapbox_quality_mode: mapboxQuality,
+        map_marker_mode: markerMode,
       });
       // Only mirror the normalized style into the form once it is actually persisted.
       if (!mirrorStyleBeforeSave) setMapboxStyle(glStyle);
@@ -110,6 +121,8 @@ export function useMapSettingsForm({ mirrorStyleBeforeSave = false }: MapSetting
     setMapbox3d,
     mapboxQuality,
     setMapboxQuality,
+    markerMode,
+    setMarkerMode,
     previewPlaces,
     glPreview,
     webgl2Missing,

@@ -42,6 +42,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'URL template for map tiles',
   'settings.mapProvider': 'Map Provider',
   'settings.mapProviderHint': 'Affects Trip Planner and Journey maps. Atlas always uses Leaflet.',
+  'settings.mapMarkerMode': 'Marker Display Mode',
+  'settings.mapMarkerModeHint':
+    'Whether map markers show place photos when available, or always the category icon and colour.',
+  'settings.mapMarkerModePhotos': 'Photos',
+  'settings.mapMarkerModeCategories': 'Category icons',
   'settings.mapLeafletSubtitle': 'Classic 2D, any raster tiles',
   'settings.mapMapboxSubtitle': 'Vector tiles, 3D buildings & terrain',
   'settings.mapMapLibreSubtitle': 'OpenFreeMap vector tiles, no token',

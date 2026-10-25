@@ -89,6 +89,7 @@ export const DEFAULT_SETTINGS: Settings = {
   show_place_description: false,
   optimize_from_accommodation: true,
   map_provider: 'leaflet',
+  map_marker_mode: 'photos',
   map_base_layer: 'default',
   map_poi_pill_enabled: true,
   assistant_map_follow: true,

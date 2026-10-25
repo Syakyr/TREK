@@ -33,6 +33,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'URL šablony pro mapové dlaždice',
   'settings.mapProvider': 'Poskytovatel mapy',
   'settings.mapProviderHint': 'Ovlivňuje mapy v Trip Planneru a Journey. Atlas vždy používá Leaflet.',
+  'settings.mapMarkerMode': 'Režim zobrazení značek',
+  'settings.mapMarkerModeHint':
+    'Zda značky na mapě zobrazují fotografie míst, pokud existují, nebo vždy ikonu a barvu kategorie.',
+  'settings.mapMarkerModePhotos': 'Fotky',
+  'settings.mapMarkerModeCategories': 'Ikony kategorií',
   'settings.mapLeafletSubtitle': 'Klasické 2D, libovolné rastrové dlaždice',
   'settings.mapMapboxSubtitle': 'Vektorové dlaždice, 3D budovy a terén',
   'settings.mapMapLibreSubtitle': 'Vektorové dlaždice OpenFreeMap, bez tokenu',

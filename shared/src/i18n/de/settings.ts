@@ -34,6 +34,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'URL-Template für die Kartenkacheln',
   'settings.mapProvider': 'Kartenanbieter',
   'settings.mapProviderHint': 'Gilt für Trip Planner und Journey. Atlas nutzt immer Leaflet.',
+  'settings.mapMarkerMode': 'Marker-Anzeigemodus',
+  'settings.mapMarkerModeHint':
+    'Ob Kartenmarker Platzfotos anzeigen, wenn vorhanden, oder immer Kategoriesymbol und -farbe.',
+  'settings.mapMarkerModePhotos': 'Fotos',
+  'settings.mapMarkerModeCategories': 'Kategoriesymbole',
   'settings.mapLeafletSubtitle': 'Klassisch 2D, beliebige Raster-Kacheln',
   'settings.mapMapboxSubtitle': 'Vektor-Kacheln, 3D-Gebäude & Terrain',
   'settings.mapMapLibreSubtitle': 'OpenFreeMap Vektor-Kacheln, kein Token',

@@ -43,6 +43,14 @@ export const MAP_PRESETS: MapPreset[] = [
 
 export type MapProvider = 'leaflet' | GlMapProvider;
 
+/** What map markers wear: place photos when there are any, or always the category icon. */
+export type MarkerMode = 'photos' | 'categories';
+
+/** Anything but the explicit 'categories' is the default 'photos', like every other setting normalizer here. */
+export function normalizeMarkerMode(value: unknown): MarkerMode {
+  return value === 'categories' ? 'categories' : 'photos';
+}
+
 export function normalizeProvider(value: unknown): MapProvider {
   return value === 'mapbox-gl' || value === 'maplibre-gl' ? value : 'leaflet';
 }

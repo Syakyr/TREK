@@ -33,6 +33,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'Template URL untuk tile peta',
   'settings.mapProvider': 'Penyedia peta',
   'settings.mapProviderHint': 'Berlaku untuk peta Trip Planner dan Journey. Atlas selalu menggunakan Leaflet.',
+  'settings.mapMarkerMode': 'Mode Tampilan Penanda',
+  'settings.mapMarkerModeHint':
+    'Apakah penanda peta menampilkan foto tempat bila tersedia, atau selalu ikon dan warna kategori.',
+  'settings.mapMarkerModePhotos': 'Foto',
+  'settings.mapMarkerModeCategories': 'Ikon kategori',
   'settings.mapLeafletSubtitle': 'Klasik 2D, tile raster apa pun',
   'settings.mapMapboxSubtitle': 'Tile vektor, bangunan 3D & medan',
   'settings.mapMapLibreSubtitle': 'Tile vektor OpenFreeMap, tanpa token',

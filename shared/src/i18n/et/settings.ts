@@ -42,6 +42,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'Kaardipaanide URL-i mall',
   'settings.mapProvider': 'Kaarditeenus',
   'settings.mapProviderHint': 'Mõjutab reisiplaneerija ja reisilugude kaarte. Atlas kasutab alati Leafleti.',
+  'settings.mapMarkerMode': 'Markerite kuvamise režiim',
+  'settings.mapMarkerModeHint':
+    'Kas kaardi markerid näitavad kohtade fotosid, kui need on olemas, või alati kategooria ikooni ja värvi.',
+  'settings.mapMarkerModePhotos': 'Fotod',
+  'settings.mapMarkerModeCategories': 'Kategooriaikoonid',
   'settings.mapLeafletSubtitle': 'Klassikaline 2D, mis tahes rasterpaanid',
   'settings.mapMapboxSubtitle': 'Vektorpaanid, 3D-hooned ja maastik',
   'settings.mapMapLibreSubtitle': 'OpenFreeMapi vektorpaanid, pääseta',

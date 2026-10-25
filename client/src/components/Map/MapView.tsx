@@ -583,7 +583,7 @@ function MapContextMenuHandler({ onContextMenu }: { onContextMenu: ((e: L.Leafle
 
 // Travel times are shown in the day sidebar (per-segment connectors), not on the map.
 
-import { useMarkerThumbs } from './useMarkerThumbs'
+import { useMarkerThumbs, useMarkerPhotos } from './useMarkerThumbs'
 import { markerPhotoHtml, placePhotoFull, placePhotoUrl } from './placePhoto'
 import { useGeolocation } from '../../hooks/useGeolocation'
 import LocationButton from './LocationButton'
@@ -949,7 +949,8 @@ export const MapView = memo(function MapView({
   // include the full polyline once it has been computed.
   const routeCoords = useMemo<[number, number][]>(() => (route || []).flat() as [number, number][], [route])
   const photoUrls = useMarkerThumbs(places)
-
+  // 'Category icons' mode: markers never wear a photo, only the category icon.
+  const markerPhotos = useMarkerPhotos()
   const isTouchDevice = typeof window !== 'undefined' && navigator.maxTouchPoints > 0
   // Drag a marker onto a day (#891). Pointer-driven, so it is off wherever
   // HTML5 drag does not exist — and the day plan is not on screen there anyway.
@@ -991,7 +992,7 @@ export const MapView = memo(function MapView({
 
   const markers = useMemo(() => places.map((place) => {
     const isSelected = place.id === selectedPlaceId
-    const photoUrl = placePhotoUrl(place, photoUrls)
+    const photoUrl = markerPhotos ? placePhotoUrl(place, photoUrls) : null
     const orderNumbers = dayOrderMap[place.id] ?? null
     return (
       <MemoMarker
@@ -1007,7 +1008,7 @@ export const MapView = memo(function MapView({
         onRegister={registerMarker}
       />
     )
-  }), [places, selectedPlaceId, dayOrderMap, photoUrls, handleMarkerClick, handleMarkerHover, handleMarkerHoverOut, markersDraggable, registerMarker])
+  }), [places, selectedPlaceId, dayOrderMap, photoUrls, markerPhotos, handleMarkerClick, handleMarkerHover, handleMarkerHoverOut, markersDraggable, registerMarker])
 
   // Parsing track geometry is the expensive part (tracks run to tens of thousands
   // of points), so it hangs off `places` alone — a selection change must not

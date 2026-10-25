@@ -33,6 +33,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'Szablon URL dla kafelków mapy',
   'settings.mapProvider': 'Dostawca mapy',
   'settings.mapProviderHint': 'Dotyczy map Trip Planner i Journey. Atlas zawsze używa Leaflet.',
+  'settings.mapMarkerMode': 'Tryb wyświetlania znaczników',
+  'settings.mapMarkerModeHint':
+    'Czy znaczniki na mapie pokazują zdjęcia miejsc, jeśli są dostępne, czy zawsze ikonę i kolor kategorii.',
+  'settings.mapMarkerModePhotos': 'Zdjęcia',
+  'settings.mapMarkerModeCategories': 'Ikony kategorii',
   'settings.mapLeafletSubtitle': 'Klasyczne 2D, dowolne kafelki rastrowe',
   'settings.mapMapboxSubtitle': 'Kafelki wektorowe, budynki 3D i teren',
   'settings.mapMapLibreSubtitle': 'Kafelki wektorowe OpenFreeMap, bez tokena',

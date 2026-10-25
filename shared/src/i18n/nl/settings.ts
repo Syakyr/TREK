@@ -34,6 +34,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'URL-sjabloon voor kaarttegels',
   'settings.mapProvider': 'Kaartprovider',
   'settings.mapProviderHint': 'Geldt voor Trip Planner en Journey kaarten. Atlas gebruikt altijd Leaflet.',
+  'settings.mapMarkerMode': 'Weergavemodus van markers',
+  'settings.mapMarkerModeHint':
+    'Of kaartmarkers foto’s van plaatsen tonen wanneer die er zijn, of altijd het categoriepictogram en de kleur.',
+  'settings.mapMarkerModePhotos': 'Foto’s',
+  'settings.mapMarkerModeCategories': 'Categoriepictogrammen',
   'settings.mapLeafletSubtitle': 'Klassiek 2D, elke raster-tile',
   'settings.mapMapboxSubtitle': 'Vector tiles, 3D-gebouwen & terrein',
   'settings.mapMapLibreSubtitle': 'OpenFreeMap vector tiles, geen token',

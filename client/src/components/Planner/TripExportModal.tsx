@@ -1,5 +1,5 @@
-import { useId, useState } from 'react'
-import { CalendarDays, CalendarPlus, ChevronRight, ClipboardCopy, Download, FileText, Loader2, MapPin, Route as RouteIcon, UserRound } from 'lucide-react'
+import { useId, useRef, useState } from 'react'
+import { CalendarDays, CalendarPlus, ChevronRight, ClipboardCopy, Download, FileJson, FileText, Import, Loader2, MapPin, Route as RouteIcon, UserRound } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { DialogHeader, DialogSection, DialogShell, DialogTile, NEUTRAL_TINT, fs } from '../shared/DialogShell'
 import { IcsSubscribeModal } from './IcsSubscribeModal'
@@ -57,8 +57,10 @@ export function TripExportModal({
 }: TripExportModalProps) {
   const [subscribeOpen, setSubscribeOpen] = useState(false)
   const titleId = useId()
+  // The import row opens the OS file picker; the dialog itself stays closed.
+  const jsonFileRef = useRef<HTMLInputElement>(null)
   const {
-    fileBase, offerMine, isRunning, anyRunning, exportPdf, downloadIcs, copyMarkdown, downloadGpx,
+    fileBase, offerMine, isRunning, anyRunning, exportPdf, downloadIcs, copyMarkdown, downloadJson, importJson, downloadGpx,
   } = useTripExport({
     tripId,
     data: { trip, days, places, assignments, categories, reservations, dayNotes },
@@ -116,6 +118,33 @@ export function TripExportModal({
               busy={isRunning('markdown')}
               disabled={anyRunning}
               onClick={copyMarkdown}
+            />
+            <ExportRow
+              icon={FileJson}
+              title={t('dayplan.exportJson')}
+              sub={`${fileBase}.json`}
+              busy={isRunning('json')}
+              disabled={anyRunning}
+              onClick={downloadJson}
+            />
+            <ExportRow
+              icon={Import}
+              title={t('dayplan.importJsonAppend')}
+              sub={t('dayplan.importJsonAppendSub')}
+              busy={isRunning('jsonimport')}
+              disabled={anyRunning}
+              onClick={() => jsonFileRef.current?.click()}
+            />
+            <input
+              ref={jsonFileRef}
+              type="file"
+              accept="application/json,.json"
+              className="hidden"
+              onChange={async e => {
+                const file = e.target.files?.[0]
+                e.target.value = ''
+                if (file) await importJson(file, true)
+              }}
             />
           </div>
         </DialogSection>

@@ -1,5 +1,5 @@
-import { useState, type ReactNode } from 'react'
-import { CalendarPlus, ChevronRight, ClipboardCopy, FileDown, Share2, UserRound } from 'lucide-react'
+import { useRef, useState, type ReactNode } from 'react'
+import { CalendarPlus, ChevronRight, ClipboardCopy, FileDown, FileJson, Import, Share2, UserRound } from 'lucide-react'
 import MSheet from '../../../components/MSheet'
 import { IcsSubscribeModal } from '../../../../components/Planner/IcsSubscribeModal'
 import { useTripStore } from '../../../../store/tripStore'
@@ -20,10 +20,11 @@ export default function MExportSheet({ planner, shell }: MTripSheetsProps) {
   const open = shell.sheet?.id === 'export'
   const dayNotes = useTripStore(s => s.dayNotes)
   const [subscribeOpen, setSubscribeOpen] = useState(false)
+  const jsonFileRef = useRef<HTMLInputElement>(null)
   // Fed the way the desktop dialog feeds it: the store's assignments, and the export
   // applies the day plan's filter itself, so both shells print the same. The PDF stays
   // open here; a calendar or GPX file closes the sheet.
-  const { offerMine, isRunning, exportPdf, downloadIcs, copyMarkdown, downloadGpx } = useTripExport({
+  const { offerMine, isRunning, exportPdf, downloadIcs, copyMarkdown, downloadJson, importJson, downloadGpx } = useTripExport({
     tripId: planner.tripId,
     data: {
       trip: planner.trip,
@@ -83,6 +84,29 @@ export default function MExportSheet({ planner, shell }: MTripSheetsProps) {
             title={isRunning('markdown') ? t('common.loading') : t('dayplan.exportMarkdown')}
             sub={t('dayplan.exportMarkdownSub')}
             onClick={() => void copyMarkdown()}
+          />
+          <ExportRow
+            icon={FileJson}
+            title={isRunning('json') ? t('common.loading') : t('dayplan.exportJson')}
+            sub={`${planner.trip?.title || 'trip'}.json`}
+            onClick={() => void downloadJson()}
+          />
+          <ExportRow
+            icon={Import}
+            title={isRunning('jsonimport') ? t('common.loading') : t('dayplan.importJsonAppend')}
+            sub={t('dayplan.importJsonAppendSub')}
+            onClick={() => jsonFileRef.current?.click()}
+          />
+          <input
+            ref={jsonFileRef}
+            type="file"
+            accept="application/json,.json"
+            className="hidden"
+            onChange={async e => {
+              const file = e.target.files?.[0]
+              e.target.value = ''
+              if (file) await importJson(file, true)
+            }}
           />
           <ExportRow
             icon={FileDown}

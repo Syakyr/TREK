@@ -1,5 +1,5 @@
 import { useId, useState } from 'react'
-import { CalendarDays, CalendarPlus, ChevronRight, Download, FileText, Loader2, MapPin, Route as RouteIcon, UserRound } from 'lucide-react'
+import { CalendarDays, CalendarPlus, ChevronRight, ClipboardCopy, Download, FileText, Loader2, MapPin, Route as RouteIcon, UserRound } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { DialogHeader, DialogSection, DialogShell, DialogTile, NEUTRAL_TINT, fs } from '../shared/DialogShell'
 import { IcsSubscribeModal } from './IcsSubscribeModal'
@@ -58,7 +58,7 @@ export function TripExportModal({
   const [subscribeOpen, setSubscribeOpen] = useState(false)
   const titleId = useId()
   const {
-    fileBase, offerMine, isRunning, anyRunning, exportPdf, downloadIcs, downloadGpx,
+    fileBase, offerMine, isRunning, anyRunning, exportPdf, downloadIcs, copyMarkdown, downloadGpx,
   } = useTripExport({
     tripId,
     data: { trip, days, places, assignments, categories, reservations, dayNotes },
@@ -109,6 +109,14 @@ export function TripExportModal({
                 onClick={() => exportPdf(true)}
               />
             )}
+            <ExportRow
+              icon={ClipboardCopy}
+              title={t('dayplan.exportMarkdown')}
+              sub={t('dayplan.exportMarkdownSub')}
+              busy={isRunning('markdown')}
+              disabled={anyRunning}
+              onClick={copyMarkdown}
+            />
           </div>
         </DialogSection>
 

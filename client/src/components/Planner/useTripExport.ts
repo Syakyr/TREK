@@ -6,11 +6,12 @@ import { useSettingsStore } from '../../store/settingsStore';
 import type { AssignmentsMap, Category, Day, DayNote, Place, Reservation, Trip } from '../../types';
 import { importChunk } from '../../utils/chunkReload';
 import { hasPersonalPlan } from '../PDF/pdfScope';
+import { buildTripMarkdown } from './tripMarkdown';
 
 type Translate = (key: string, params?: Record<string, string | number>) => string;
 
-/** A running export: a PDF of the plan or of my plan, the calendar file, or a GPX scope. */
-export type ExportJob = 'pdf' | 'pdf:mine' | 'ics' | `gpx:${string}`;
+/** A running export: a PDF of the plan or of my plan, the calendar file, a GPX scope, or the markdown copy. */
+export type ExportJob = 'pdf' | 'pdf:mine' | 'ics' | 'markdown' | `gpx:${string}`;
 
 /** What a trip export prints, as both shells hold it. */
 export interface TripExportData {
@@ -28,7 +29,7 @@ export interface TripExportOptions {
   data: TripExportData;
   t: Translate;
   locale: string;
-  toast: { error: (message: string) => void; info: (message: string) => void };
+  toast: { error: (message: string) => void; info: (message: string) => void; success: (message: string) => void };
   /**
    * The desktop runs one export at a time, so any running one holds every row; the
    * phone holds back only another PDF, calendar file or GPX file while the same kind
@@ -158,6 +159,22 @@ export function useTripExport({
     }
   };
 
+  /** Copy the whole plan as readable markdown to the clipboard — days, stops, notes, bookings. */
+  const copyMarkdown = async () => {
+    const job: ExportJob = 'markdown';
+    if (running[laneOf(job)]) return;
+    begin(job);
+    try {
+      await navigator.clipboard.writeText(buildTripMarkdown(data, { t, locale, timeFormat }));
+      toast.success(t('dayplan.markdownCopied'));
+      onExported();
+    } catch {
+      toast.error(t('dayplan.markdownCopyFailed'));
+    } finally {
+      end(job);
+    }
+  };
+
   /** One GPX scope; `query` narrows what the file carries, empty for everything. */
   const downloadGpx = async (key: string, query: string) => {
     const job: ExportJob = `gpx:${key}`;
@@ -188,6 +205,7 @@ export function useTripExport({
     anyRunning: Object.keys(running).length > 0,
     exportPdf,
     downloadIcs,
+    copyMarkdown,
     downloadGpx,
   };
 }

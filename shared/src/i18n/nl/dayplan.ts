@@ -66,6 +66,31 @@ const dayplan: TranslationStrings = {
   'dayplan.gpxEmpty': 'Er valt nog niets te exporteren',
   'dayplan.gpxFailed': 'GPX-export mislukt',
   'dayplan.pdfError': 'PDF-export mislukt',
+  'dayplan.exportMarkdown': 'Markdown kopiëren',
+  'dayplan.exportMarkdownSub': 'Het plan als tekst, op het klembord',
+  'dayplan.markdownCopied': 'Reisplan als markdown gekopieerd',
+  'dayplan.markdownCopyFailed': 'Kopiëren naar klembord mislukt',
+  'dayplan.mdDate': 'Datum',
+  'dayplan.mdTime': 'Tijd',
+  'dayplan.mdAddress': 'Adres',
+  'dayplan.mdCategory': 'Categorie',
+  'dayplan.mdDescription': 'Beschrijving',
+  'dayplan.mdNotes': 'Notities',
+  'dayplan.mdWebsite': 'Website', // same-as-en
+  'dayplan.mdType': 'Type', // same-as-en
+  'dayplan.mdStatus': 'Status', // same-as-en
+  'dayplan.mdDeparture': 'Vertrek',
+  'dayplan.mdArrival': 'Aankomst',
+  'dayplan.mdAirline': 'Luchtvaartmaatschappij',
+  'dayplan.mdFlightNo': 'Vluchtnr.',
+  'dayplan.mdTrainNo': 'Trein nr.',
+  'dayplan.mdPlatform': 'Perron',
+  'dayplan.mdSeat': 'Stoel',
+  'dayplan.mdFrom': 'Van',
+  'dayplan.mdTo': 'Naar',
+  'dayplan.mdLocation': 'Locatie',
+  'dayplan.mdBookingCode': 'Boekingscode',
+  'dayplan.mdUrl': 'URL', // same-as-en
   'dayplan.cannotReorderTransport': 'Boekingen met een vast tijdstip kunnen niet worden verplaatst',
   'dayplan.confirmRemoveTimeTitle': 'Tijd verwijderen?',
   'dayplan.confirmRemoveTimeBody':

@@ -9,8 +9,8 @@ import { hasPersonalPlan } from '../PDF/pdfScope';
 
 type Translate = (key: string, params?: Record<string, string | number>) => string;
 
-/** A running export: a PDF of the plan or of my plan, the calendar file, or a GPX scope. */
-export type ExportJob = 'pdf' | 'pdf:mine' | 'ics' | `gpx:${string}`;
+/** A running export: a PDF of the plan or of my plan, the calendar file, a GPX scope, or the JSON document out or in. */
+export type ExportJob = 'pdf' | 'pdf:mine' | 'ics' | 'json' | 'jsonimport' | `gpx:${string}`;
 
 /** What a trip export prints, as both shells hold it. */
 export interface TripExportData {
@@ -158,6 +158,50 @@ export function useTripExport({
     }
   };
 
+  /** The whole trip as one portable JSON document (see @trek/shared itinerary-json). */
+  const downloadJson = async () => {
+    const job: ExportJob = 'json';
+    if (running[laneOf(job)]) return;
+    begin(job);
+    try {
+      const res = await fetch(`/api/trips/${tripId}/export.json`, { credentials: 'include' });
+      if (!res.ok) throw new Error();
+      saveBlob(await res.blob(), `${fileBase}.json`);
+      onExported();
+    } catch {
+      toast.error(t('dayplan.jsonExportFailed'));
+    } finally {
+      end(job);
+    }
+  };
+
+  /** Read a document back in: appended to this trip, or as a brand-new one. */
+  const importJson = async (file: File, appendToTrip: boolean) => {
+    const job: ExportJob = 'jsonimport';
+    if (running[laneOf(job)]) return;
+    begin(job);
+    try {
+      const itinerary = JSON.parse(await file.text());
+      const url = appendToTrip ? `/api/trips/${tripId}/import-schedule-json` : '/api/trips/import-json';
+      const res = await fetch(url, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ itinerary }),
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(body.error ?? '');
+      }
+      toast.info(t('dayplan.jsonImportDone'));
+      onExported();
+    } catch (e) {
+      toast.error(e instanceof Error && e.message ? e.message : t('dayplan.jsonImportFailed'));
+    } finally {
+      end(job);
+    }
+  };
+
   /** One GPX scope; `query` narrows what the file carries, empty for everything. */
   const downloadGpx = async (key: string, query: string) => {
     const job: ExportJob = `gpx:${key}`;
@@ -188,6 +232,8 @@ export function useTripExport({
     anyRunning: Object.keys(running).length > 0,
     exportPdf,
     downloadIcs,
+    downloadJson,
+    importJson,
     downloadGpx,
   };
 }

@@ -15,6 +15,7 @@ export * from './common/strip-markdown';
 
 // Domain contracts
 export * from './weather/weather.schema';
+export * from './itinerary-json/itinerary-json.schema';
 export * from './weather/wind.schema';
 export * from './paddle/paddle-obstacles.schema';
 export * from './paddle/paddle-route-relation';

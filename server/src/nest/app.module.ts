@@ -41,6 +41,7 @@ import { ConfigModule } from './config/config.module';
 import { DatabaseLifecycleModule } from './database/database-lifecycle.module';
 import { OrmModule } from './database/orm.module';
 import { DayNotesModule } from './day-notes/day-notes.module';
+import { ItineraryJsonModule } from './itinerary-json/itinerary-json.module';
 import { DaysModule } from './days/days.module';
 import { DocSyncModule } from './doc-sync/doc-sync.module';
 import { FeedsModule } from './feeds/feeds.module';
@@ -155,6 +156,7 @@ import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
     ReservationsModule,
     DaysModule,
     DayNotesModule,
+    ItineraryJsonModule,
     AccommodationsModule,
     AssignmentsModule,
     PlacesModule,

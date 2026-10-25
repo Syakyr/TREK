@@ -90,6 +90,12 @@ const dayplan: TranslationStrings = {
   'dayplan.gpxEmpty': 'Hələ ixrac ediləcək heç nə yoxdur',
   'dayplan.gpxFailed': 'GPX ixracı uğursuz oldu',
   'dayplan.pdfError': 'PDF-i ixrac etmək mümkün olmadı',
+  'dayplan.exportJson': 'JSON yüklə',
+  'dayplan.importJsonAppend': 'Bu səfərə idxal et',
+  'dayplan.importJsonAppendSub': 'Səfər planı JSON sənədi əlavə et',
+  'dayplan.jsonExportFailed': 'JSON ixrac olunmadı',
+  'dayplan.jsonImportDone': 'Səfər planı idxal olundu',
+  'dayplan.jsonImportFailed': 'JSON idxal olunmadı',
 
   'dayplan.mobile.addPlace': 'Məkan əlavə et',
   'dayplan.mobile.searchPlaces': 'Məkanları axtarın...',

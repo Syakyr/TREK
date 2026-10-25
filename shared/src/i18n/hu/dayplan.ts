@@ -66,6 +66,12 @@ const dayplan: TranslationStrings = {
   'dayplan.gpxEmpty': 'Még nincs mit exportálni',
   'dayplan.gpxFailed': 'A GPX-exportálás nem sikerült',
   'dayplan.pdfError': 'Nem sikerült a PDF exportálás',
+  'dayplan.exportJson': 'JSON letöltése',
+  'dayplan.importJsonAppend': 'Importálás ebbe az utazásba',
+  'dayplan.importJsonAppendSub': 'Útiterv-dokumentum hozzáadása',
+  'dayplan.jsonExportFailed': 'A JSON exportálása nem sikerült',
+  'dayplan.jsonImportDone': 'Az útiterv importálva',
+  'dayplan.jsonImportFailed': 'A JSON importálása nem sikerült',
   'dayplan.cannotReorderTransport': 'A rögzített időpontú foglalások nem rendezhetők át',
   'dayplan.confirmRemoveTimeTitle': 'Időpont eltávolítása?',
   'dayplan.confirmRemoveTimeBody':

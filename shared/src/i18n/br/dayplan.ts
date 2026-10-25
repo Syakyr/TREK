@@ -66,6 +66,12 @@ const dayplan: TranslationStrings = {
   'dayplan.gpxEmpty': 'Ainda não há nada para exportar',
   'dayplan.gpxFailed': 'Falha ao exportar o GPX',
   'dayplan.pdfError': 'Falha ao exportar PDF',
+  'dayplan.exportJson': 'Baixar JSON',
+  'dayplan.importJsonAppend': 'Importar para esta viagem',
+  'dayplan.importJsonAppendSub': 'Anexar um documento JSON de roteiro',
+  'dayplan.jsonExportFailed': 'Falha ao exportar JSON',
+  'dayplan.jsonImportDone': 'Roteiro importado',
+  'dayplan.jsonImportFailed': 'Falha ao importar JSON',
   'dayplan.cannotReorderTransport': 'Reservas com horário fixo não podem ser reordenadas',
   'dayplan.confirmRemoveTimeTitle': 'Remover horário?',
   'dayplan.confirmRemoveTimeBody':

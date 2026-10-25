@@ -66,6 +66,12 @@ const dayplan: TranslationStrings = {
   'dayplan.gpxEmpty': 'Zatím není co exportovat',
   'dayplan.gpxFailed': 'Export GPX selhal',
   'dayplan.pdfError': 'Export do PDF se nezdařil',
+  'dayplan.exportJson': 'Stáhnout JSON',
+  'dayplan.importJsonAppend': 'Importovat do této cesty',
+  'dayplan.importJsonAppendSub': 'Přidat JSON dokument itineráře',
+  'dayplan.jsonExportFailed': 'Export JSON se nezdařil',
+  'dayplan.jsonImportDone': 'Itinerář importován',
+  'dayplan.jsonImportFailed': 'Import JSON se nezdařil',
   'dayplan.cannotReorderTransport': 'Rezervace s pevným časem nelze přeuspořádat',
   'dayplan.confirmRemoveTimeTitle': 'Odebrat čas?',
   'dayplan.confirmRemoveTimeBody':

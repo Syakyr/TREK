@@ -67,6 +67,12 @@ const dayplan: TranslationStrings = {
   'dayplan.gpxFailed': "L'exportació GPX ha fallat",
   'dayplan.pdfError': "No s'ha pogut exportar el PDF",
   'dayplan.cannotReorderTransport': 'Les reserves amb hora fixa no es poden reordenar',
+  'dayplan.exportJson': 'Descarrega JSON',
+  'dayplan.importJsonAppend': 'Importa a aquest viatge',
+  'dayplan.importJsonAppendSub': 'Afegeix un document JSON d’itinerari',
+  'dayplan.jsonExportFailed': 'Error en exportar JSON',
+  'dayplan.jsonImportDone': 'Itinerari importat',
+  'dayplan.jsonImportFailed': 'Error en importar JSON',
   'dayplan.confirmRemoveTimeTitle': "Vols eliminar l'hora?",
   'dayplan.confirmRemoveTimeBody':
     "Aquest lloc té una hora fixa ({time}). Si el mous s'eliminarà l'hora i es permetrà l'ordre lliure.",

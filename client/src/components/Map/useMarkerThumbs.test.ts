@@ -19,7 +19,8 @@ vi.mock('../../services/photoService', () => ({
 
 import * as photoService from '../../services/photoService';
 import { useAuthStore } from '../../store/authStore';
-import { useMarkerThumbs } from './useMarkerThumbs';
+import { useSettingsStore } from '../../store/settingsStore';
+import { useMarkerPhotos, useMarkerThumbs } from './useMarkerThumbs';
 
 function place(over: Partial<Place>): Place {
   return { id: 1, name: 'P', lat: 48, lng: 2, image_url: null, google_place_id: null, osm_id: null, ...over } as Place;
@@ -55,6 +56,22 @@ describe('useMarkerThumbs', () => {
   it('starts from the thumbs already cached', () => {
     const { result } = renderHook(() => useMarkerThumbs([]));
     expect(result.current).toEqual({ seeded: 'data:seed' });
+  });
+
+  it('fetches nothing while the marker display mode is category icons', () => {
+    useSettingsStore.setState((s) => ({ ...s, settings: { ...s.settings, map_marker_mode: 'categories' } }));
+    renderHook(() => useMarkerThumbs([place({ id: 1, google_place_id: 'gp-1' })]));
+    expect(photoService.fetchPhoto).not.toHaveBeenCalled();
+    useSettingsStore.setState((s) => ({ ...s, settings: { ...s.settings, map_marker_mode: 'photos' } }));
+    renderHook(() => useMarkerThumbs([place({ id: 1, google_place_id: 'gp-2' })]));
+    expect(photoService.fetchPhoto).toHaveBeenCalledWith('gp-2', 'gp-2', 48, 2, 'P');
+  });
+
+  it('useMarkerPhotos is on by default and off only for categories', () => {
+    expect(renderHook(() => useMarkerPhotos()).result.current).toBe(true);
+    useSettingsStore.setState((s) => ({ ...s, settings: { ...s.settings, map_marker_mode: 'categories' } }));
+    expect(renderHook(() => useMarkerPhotos()).result.current).toBe(false);
+    useSettingsStore.setState((s) => ({ ...s, settings: { ...s.settings, map_marker_mode: 'photos' } }));
   });
 
   it('fetches a missing photo by its provider id, else by its coordinates', () => {

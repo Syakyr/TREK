@@ -34,6 +34,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'URL-шаблон для тайлів карти',
   'settings.mapProvider': 'Провайдер карти',
   'settings.mapProviderHint': 'Застосовується до Trip Planner та Journey. Atlas завжди використовує Leaflet.',
+  'settings.mapMarkerMode': 'Режим відображення міток',
+  'settings.mapMarkerModeHint':
+    'Чи показувати на мітках карти фото місць, якщо вони є, чи завжди піктограму та колір категорії.',
+  'settings.mapMarkerModePhotos': 'Фото',
+  'settings.mapMarkerModeCategories': 'Піктограми категорій',
   'settings.mapLeafletSubtitle': 'Класичні 2D, будь-які растрові тайли',
   'settings.mapMapboxSubtitle': 'Векторні тайли, 3D-будинки та рельєф',
   'settings.mapMapLibreSubtitle': 'Векторні тайли OpenFreeMap, без токена',

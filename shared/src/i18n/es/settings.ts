@@ -33,6 +33,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'Plantilla de URL para los mosaicos del mapa',
   'settings.mapProvider': 'Proveedor de mapa',
   'settings.mapProviderHint': 'Afecta a los mapas de Trip Planner y Journey. Atlas siempre usa Leaflet.',
+  'settings.mapMarkerMode': 'Modo de presentación de marcadores',
+  'settings.mapMarkerModeHint':
+    'Si los marcadores del mapa muestran fotos de los lugares cuando las hay, o siempre el icono y color de la categoría.',
+  'settings.mapMarkerModePhotos': 'Fotos',
+  'settings.mapMarkerModeCategories': 'Iconos de categoría',
   'settings.mapLeafletSubtitle': 'Clásico 2D, cualquier mosaico raster',
   'settings.mapMapboxSubtitle': 'Mosaicos vectoriales, edificios 3D y terreno',
   'settings.mapMapLibreSubtitle': 'Mosaicos vectoriales de OpenFreeMap, sin token',

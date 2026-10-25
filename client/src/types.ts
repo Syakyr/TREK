@@ -161,6 +161,8 @@ export interface Settings {
   map_always_show_routes?: boolean
   optimize_from_accommodation?: boolean
   map_provider?: 'leaflet' | 'mapbox-gl' | 'maplibre-gl'
+  /** Whether map markers wear place photos ('photos', the default) or always the category icon. */
+  map_marker_mode?: 'photos' | 'categories'
   /** Leaflet base layer: default street tiles or a satellite/aerial view. */
   map_base_layer?: 'default' | 'satellite'
   /**

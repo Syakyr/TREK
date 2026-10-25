@@ -33,6 +33,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'Modello URL per i tile della mappa',
   'settings.mapProvider': 'Provider mappa',
   'settings.mapProviderHint': 'Influisce sulle mappe Trip Planner e Journey. Atlas usa sempre Leaflet.',
+  'settings.mapMarkerMode': 'Modalità di visualizzazione dei segnaposto',
+  'settings.mapMarkerModeHint':
+    'Se i segnaposto sulla mappa mostrano le foto dei luoghi quando disponibili, o sempre l’icona e il colore della categoria.',
+  'settings.mapMarkerModePhotos': 'Foto',
+  'settings.mapMarkerModeCategories': 'Icone di categoria',
   'settings.mapLeafletSubtitle': 'Classica 2D, qualsiasi tile raster',
   'settings.mapMapboxSubtitle': 'Tile vettoriali, edifici 3D e terreno',
   'settings.mapMapLibreSubtitle': 'Tile vettoriali OpenFreeMap, senza token',

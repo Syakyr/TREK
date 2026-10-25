@@ -14,7 +14,7 @@ import { reportGlViewport } from './glViewport'
 import { isTourLayerHit, useTourMapLayersGL } from './mapRasterOverlay'
 import { MapLayerSwitcher, TourMapLayerSwitcher, MAP_LAYER_SWITCHER_INSET, type BaseLayer, type TourBaseLayer } from './MapLayerSwitcher'
 import { MapLockPill } from './MapLockPill'
-import { useMarkerThumbs } from './useMarkerThumbs'
+import { useMarkerThumbs, useMarkerPhotos } from './useMarkerThumbs'
 import { placeMarkerLook, type PlaceMarkerFlags } from './markerLook'
 import { markerPhotoHtml, placePhotoFull, placePhotoUrl } from './placePhoto'
 import { isStandardFamily, supportsCustom3d, wantsTerrain, addCustom3dBuildings, addTerrainAndSky } from './mapboxSetup'
@@ -1619,6 +1619,8 @@ export function MapViewGL({
 
   // Photo loading, shared with the Leaflet MapView.
   const photoUrls = useMarkerThumbs(places)
+  // 'Category icons' mode: markers never wear a photo, only the category icon.
+  const markerPhotos = useMarkerPhotos()
 
   // Reconcile markers with places + photos. The clustered GeoJSON source decides
   // which points are currently unclustered, and we render the existing rich HTML
@@ -1648,7 +1650,7 @@ export function MapViewGL({
 
       visiblePlaces.forEach(place => {
         const orderNumbers = dayOrderMap[place.id] ?? null
-        const photoUrl = placePhotoUrl(place, photoUrls)
+        const photoUrl = markerPhotos ? placePhotoUrl(place, photoUrls) : null
         const selected = place.id === selectedPlaceId
         const el = createMarkerElement(place as Place & PlaceMarkerFlags & { category_color?: string; category_icon?: string }, photoUrl, orderNumbers, selected)
         // Drag onto a day in the plan (#891). Markers are rebuilt from scratch
@@ -1756,7 +1758,7 @@ export function MapViewGL({
       map.off('zoomend', scheduleReconcile)
       map.off('idle', scheduleReconcile)
     }
-  }, [places, selectedPlaceId, dayOrderMap, photoUrls, mapReady, glProvider, clusterLoosely, assistant.markersLocked])
+  }, [places, selectedPlaceId, dayOrderMap, photoUrls, markerPhotos, mapReady, glProvider, clusterLoosely, assistant.markersLocked])
 
   // Search results stay separate from the planned itinerary.
   useEffect(() => {

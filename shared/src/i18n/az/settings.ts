@@ -47,6 +47,11 @@ const settings: TranslationStrings = {
   'settings.mapProvider': 'Xəritə provayderi',
   'settings.mapProviderHint':
     'Səyahət planlayıcısı və Səyahət gündəliyi xəritələrinə təsir edir. Atlas həmişə Leaflet istifadə edir.',
+  'settings.mapMarkerMode': 'Marker göstərmə rejimi',
+  'settings.mapMarkerModeHint':
+    'Xəritə markerləri yerlərin fotolarını olsun göstərsin, ya da həmişə kateqoriya ikonunu və rəngini.',
+  'settings.mapMarkerModePhotos': 'Fotoşəkillər',
+  'settings.mapMarkerModeCategories': 'Kateqoriya ikonları',
   'settings.mapLeafletSubtitle': 'Klassik 2D, istənilən rastr plitələri',
   'settings.mapMapboxSubtitle': 'Vektor plitələri, 3D binalar və relyef',
   'settings.mapMapLibreSubtitle': 'OpenFreeMap vektor plitələri, token tələb olunmur',

@@ -1,6 +1,7 @@
 import { useEffect, useEffectEvent, useMemo, useRef, useState } from 'react';
 import { fetchPhoto, getAllThumbs, getCached, isLoading, onThumbReady } from '../../services/photoService';
 import { useAuthStore } from '../../store/authStore';
+import { useSettingsStore } from '../../store/settingsStore';
 import type { Place } from '../../types';
 import { isCustomPlaceImage, photoCacheKey, photoSourcesKey } from './placePhoto';
 
@@ -17,12 +18,13 @@ export function useMarkerThumbs(places: Place[]): Record<string, string> {
   // Only base64 thumbs, so the markers stay smooth while the map zooms.
   const [photoUrls, setPhotoUrls] = useState<Record<string, string>>(getAllThumbs);
   const placesPhotosEnabled = useAuthStore((s) => s.placesPhotosEnabled);
+  const markerPhotos = useMarkerPhotos();
   const pendingThumbsRef = useRef<Record<string, string>>({});
   const thumbRafRef = useRef<number | null>(null);
   const photoSources = useMemo(() => photoSourcesKey(places), [places]);
 
   const startLoading = useEffectEvent((): (() => void) | undefined => {
-    if (!places || places.length === 0 || !placesPhotosEnabled) return;
+    if (!places || places.length === 0 || !placesPhotosEnabled || !markerPhotos) return;
     const cleanups: (() => void)[] = [];
 
     const setThumb = (cacheKey: string, thumb: string) => {
@@ -76,7 +78,17 @@ export function useMarkerThumbs(places: Place[]): Record<string, string> {
     };
   });
 
-  useEffect(() => startLoading(), [photoSources, placesPhotosEnabled]);
+  useEffect(() => startLoading(), [photoSources, placesPhotosEnabled, markerPhotos]);
 
   return photoUrls;
+}
+
+/**
+ * Whether map markers may wear photos at all — the marker display mode setting.
+ * 'categories' asks for the category icon and colour on every marker, so the
+ * maps skip both the thumb fetching and the picture on the marker itself.
+ * Hover cards and sidebars keep showing photos; this is about marker clarity.
+ */
+export function useMarkerPhotos(): boolean {
+  return useSettingsStore((s) => s.settings.map_marker_mode !== 'categories');
 }

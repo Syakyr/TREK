@@ -8,7 +8,14 @@ import { useAuthStore } from '../../store/authStore';
 import { useSettingsStore } from '../../store/settingsStore';
 import type { Settings } from '../../types';
 import { MAPBOX_DEFAULT_STYLE, OPENFREEMAP_DEFAULT_STYLE } from '../Map/glProviders';
-import { MAP_PRESETS, PREVIEW_CENTER, normalizeProvider, slotStyle, styleForProvider } from './mapSettingsModel';
+import {
+  MAP_PRESETS,
+  PREVIEW_CENTER,
+  normalizeMarkerMode,
+  normalizeProvider,
+  slotStyle,
+  styleForProvider,
+} from './mapSettingsModel';
 import { useMapSettingsForm } from './useMapSettingsForm';
 
 const toast = vi.hoisted(() => ({ success: vi.fn(), error: vi.fn() }));
@@ -45,6 +52,9 @@ describe('mapSettingsModel', () => {
     expect(styleForProvider('maplibre-gl', '')).toBe(OPENFREEMAP_DEFAULT_STYLE);
     expect(slotStyle('maplibre-gl', { mapbox_style: 'a', maplibre_style: 'b' })).toBe('b');
     expect(slotStyle('mapbox-gl', { mapbox_style: 'a', maplibre_style: 'b' })).toBe('a');
+    expect(normalizeMarkerMode('categories')).toBe('categories');
+    expect(normalizeMarkerMode(undefined)).toBe('photos');
+    expect(normalizeMarkerMode('bogus')).toBe('photos');
   });
 });
 
@@ -117,5 +127,14 @@ describe('useMapSettingsForm', () => {
     const { result } = renderHook(() => useMapSettingsForm());
     await act(() => result.current.save());
     expect(toast.error).toHaveBeenCalledWith('common.error');
+  });
+
+  it('FE-COMP-MAPFORM-009: the marker display mode seeds, switches and saves', async () => {
+    seed({ map_marker_mode: 'categories' });
+    const { result } = renderHook(() => useMapSettingsForm());
+    expect(result.current.markerMode).toBe('categories');
+    act(() => result.current.setMarkerMode('photos'));
+    await act(() => result.current.save());
+    expect(updateSettings).toHaveBeenCalledWith(expect.objectContaining({ map_marker_mode: 'photos' }));
   });
 });

@@ -6,7 +6,7 @@ import { MapView } from '../../../components/Map/MapView'
 import ErrorBoundary from '../../../components/shared/ErrorBoundary'
 import { GlMapPreviewMapbox, GlMapPreviewMaplibre } from '../../../components/Map/glLazy'
 import { defaultStyleForProvider, getStylePresets } from '../../../components/Map/glProviders'
-import { MAP_PRESETS, PREVIEW_CENTER, PREVIEW_ZOOM, type MapProvider } from '../../../components/Settings/mapSettingsModel'
+import { MAP_PRESETS, PREVIEW_CENTER, PREVIEW_ZOOM, type MapProvider, type MarkerMode } from '../../../components/Settings/mapSettingsModel'
 import { useMapSettingsForm } from '../../../components/Settings/useMapSettingsForm'
 import { withTileApiKey } from '../../../utils/tileUrl'
 import MToggle from '../../components/MToggle'
@@ -22,10 +22,11 @@ export default function MSettingsMap() {
   const {
     managed, saving, provider, changeProvider, mapTileUrl, setMapTileUrl, mapboxToken, setMapboxToken,
     cartoKey, setCartoKey, cartoNeedsKey, mapboxStyle, setMapboxStyle, mapbox3d, setMapbox3d,
-    mapboxQuality, setMapboxQuality, previewPlaces, glPreview, webgl2Missing, save,
+    mapboxQuality, setMapboxQuality, markerMode, setMarkerMode, previewPlaces, glPreview, webgl2Missing, save,
   } = useMapSettingsForm({ mirrorStyleBeforeSave: true })
   const [presetOpen, setPresetOpen] = useState(false)
   const [styleOpen, setStyleOpen] = useState(false)
+  const [markerModeOpen, setMarkerModeOpen] = useState(false)
 
   const providers: { id: MapProvider; name: string; sub: string; icon: typeof Layers }[] = [
     { id: 'leaflet', name: 'Leaflet', sub: t('settings.mapLeafletSubtitle'), icon: Layers },
@@ -68,6 +69,15 @@ export default function MSettingsMap() {
         })}
       </div>
       <MSetHint>{t('settings.mapProviderHint')}</MSetHint>
+
+      {/* Marker display mode — applies to every provider, same as on the desktop tab. */}
+      <MSetEyebrow className="mb-[5px] mt-[14px]">{t('settings.mapMarkerMode')}</MSetEyebrow>
+      <MSetSelectRow
+        label={markerMode === 'categories' ? t('settings.mapMarkerModeCategories') : t('settings.mapMarkerModePhotos')}
+        trailing={chevron}
+        onClick={() => setMarkerModeOpen(true)}
+      />
+      <MSetHint>{t('settings.mapMarkerModeHint')}</MSetHint>
 
       {provider === 'leaflet' && (
         <>
@@ -214,6 +224,18 @@ export default function MSettingsMap() {
         <Save size={14} />
         {t('settings.saveMap')}
       </MSetButton>
+
+      <MSetPickerSheet
+        open={markerModeOpen}
+        onClose={() => setMarkerModeOpen(false)}
+        title={t('settings.mapMarkerMode')}
+        value={markerMode}
+        onSelect={(v: string) => setMarkerMode(v as MarkerMode)}
+        options={[
+          { value: 'photos', label: t('settings.mapMarkerModePhotos') },
+          { value: 'categories', label: t('settings.mapMarkerModeCategories') },
+        ]}
+      />
 
       <MSetPickerSheet
         open={presetOpen}

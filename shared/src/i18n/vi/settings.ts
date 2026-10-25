@@ -34,6 +34,11 @@ const settings: TranslationStrings = {
   'settings.mapProvider': 'Nhà cung cấp bản đồ',
   'settings.mapProviderHint':
     'Ảnh hưởng tới Công cụ lập kế hoạch chuyến đi và bản đồ hành trình. Atlas luôn sử dụng Leaflet.',
+  'settings.mapMarkerMode': 'Chế độ hiển thị điểm đánh dấu',
+  'settings.mapMarkerModeHint':
+    'Điểm đánh dấu trên bản đồ có hiển thị ảnh địa điểm khi có, hay luôn dùng biểu tượng và màu danh mục.',
+  'settings.mapMarkerModePhotos': 'Ảnh',
+  'settings.mapMarkerModeCategories': 'Biểu tượng danh mục',
   'settings.mapLeafletSubtitle': '2D cổ điển, bất kỳ ô raster nào',
   'settings.mapMapboxSubtitle': 'Gạch vector, tòa nhà 3D và địa hình',
   'settings.mapMapLibreSubtitle': 'OpenFreeMap gạch vector, không có mã thông báo',

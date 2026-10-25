@@ -33,6 +33,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'URL-шаблон для тайлов карты',
   'settings.mapProvider': 'Провайдер карты',
   'settings.mapProviderHint': 'Применяется к Trip Planner и Journey. Atlas всегда использует Leaflet.',
+  'settings.mapMarkerMode': 'Режим отображения меток',
+  'settings.mapMarkerModeHint':
+    'Показывать ли на метках карты фотографии мест, если они есть, или всегда значок и цвет категории.',
+  'settings.mapMarkerModePhotos': 'Фото',
+  'settings.mapMarkerModeCategories': 'Значки категорий',
   'settings.mapLeafletSubtitle': 'Классические 2D, любые растровые тайлы',
   'settings.mapMapboxSubtitle': 'Векторные тайлы, 3D-здания и рельеф',
   'settings.mapMapLibreSubtitle': 'Векторные тайлы OpenFreeMap, без токена',

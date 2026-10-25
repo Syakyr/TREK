@@ -33,6 +33,11 @@ const settings: TranslationStrings = {
   'settings.mapHint': 'URL-mall för kartrutor',
   'settings.mapProvider': 'Kartleverantör',
   'settings.mapProviderHint': 'Påverkar resplaneraren och resedagbokens kartor. Atlas använder alltid Leaflet.',
+  'settings.mapMarkerMode': 'Markeringsläge',
+  'settings.mapMarkerModeHint':
+    'Om kartmarkörer visar foton av platser när de finns, eller alltid kategorins ikon och färg.',
+  'settings.mapMarkerModePhotos': 'Foton',
+  'settings.mapMarkerModeCategories': 'Kategoriikoner',
   'settings.mapLeafletSubtitle': 'Klassisk 2D, valfria rasterplattor',
   'settings.mapMapboxSubtitle': 'Vektorplattor, 3D-byggnader och terräng',
   'settings.mapMapLibreSubtitle': 'OpenFreeMap-vektorplattor, ingen token',

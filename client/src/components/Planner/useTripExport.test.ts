@@ -22,7 +22,7 @@ function options(overrides: Partial<TripExportOptions> = {}): TripExportOptions 
     data: { trip, days: [], places: [], assignments: {}, categories: [], reservations: [], dayNotes: NOTES },
     t,
     locale: 'en-US',
-    toast: { error: vi.fn(), info: vi.fn() },
+    toast: { error: vi.fn(), info: vi.fn(), success: vi.fn() },
     exclusive: true,
     onExported: vi.fn(),
     requireTrip: false,

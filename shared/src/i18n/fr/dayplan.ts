@@ -67,6 +67,31 @@ const dayplan: TranslationStrings = {
   'dayplan.gpxFailed': "Échec de l'export GPX",
   'dayplan.pdfError': "Échec de l'export PDF",
   'dayplan.cannotReorderTransport': 'Les réservations avec une heure fixe ne peuvent pas être réorganisées',
+  'dayplan.exportMarkdown': 'Copier en Markdown',
+  'dayplan.exportMarkdownSub': 'Le plan en texte, dans le presse-papiers',
+  'dayplan.markdownCopied': 'Itinéraire copié en markdown',
+  'dayplan.markdownCopyFailed': 'Impossible de copier dans le presse-papiers',
+  'dayplan.mdDate': 'Date', // same-as-en
+  'dayplan.mdTime': 'Heure',
+  'dayplan.mdAddress': 'Adresse',
+  'dayplan.mdCategory': 'Catégorie',
+  'dayplan.mdDescription': 'Description', // same-as-en
+  'dayplan.mdNotes': 'Notes', // same-as-en
+  'dayplan.mdWebsite': 'Site web',
+  'dayplan.mdType': 'Type', // same-as-en
+  'dayplan.mdStatus': 'Statut',
+  'dayplan.mdDeparture': 'Départ',
+  'dayplan.mdArrival': 'Arrivée',
+  'dayplan.mdAirline': 'Compagnie',
+  'dayplan.mdFlightNo': 'N° de vol',
+  'dayplan.mdTrainNo': 'N° de train',
+  'dayplan.mdPlatform': 'Voie',
+  'dayplan.mdSeat': 'Place',
+  'dayplan.mdFrom': 'De',
+  'dayplan.mdTo': 'À',
+  'dayplan.mdLocation': 'Lieu',
+  'dayplan.mdBookingCode': 'Code de réservation',
+  'dayplan.mdUrl': 'URL', // same-as-en
   'dayplan.confirmRemoveTimeTitle': "Supprimer l'heure ?",
   'dayplan.confirmRemoveTimeBody':
     "Ce lieu a une heure fixe ({time}). Le déplacer supprimera l'heure et permettra un tri libre.",
